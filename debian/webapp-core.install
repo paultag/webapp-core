@@ -1,4 +1,5 @@
-webapp-core-setup    usr/bin
-webapp-core-wsgi     usr/bin
-webapp-setup         usr/bin
-webapp-wsgi          usr/bin
+webapp-core-setup          usr/bin
+webapp-core-wsgi           usr/bin
+webapp-setup               usr/bin
+webapp-wsgi                usr/bin
+webapp-core-nginx-fragment usr/bin

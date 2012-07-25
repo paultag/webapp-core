@@ -1,0 +1,19 @@
+#!/bin/bash
+
+APP=$1
+
+if [ "x$APP" = "x" ]; then
+    echo "Need an appname"
+    exit 1
+fi
+
+echo "server {"
+echo "    listen 80;"
+echo "    server_name $APP.localhost;"
+echo "    access_log /var/log/nginx/$APP.access.log;"
+echo "    error_log  /var/log/nginx/$APP.error.log;"
+echo "    location / {"
+echo "        include uwsgi_params;"
+echo "        uwsgi_pass unix:///var/lib/webapp-core/socks/$APP.sock;"
+echo "    }"
+echo "}"

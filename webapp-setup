@@ -6,4 +6,12 @@ if [ $UID != 0 ]; then
     exit 1
 fi
 
+APP=$1
+NGINX_FRAGMENT="/etc/nginx/sites-available/$APP"
+
 su webapp-core -c "webapp-core-setup $@"
+
+if [ ! -e $NGINX_FRAGMENT ]; then
+    webapp-core-nginx-fragment > $NGINX_FRAGMENT
+    echo "Wrote out $NGINX_FRAGMENT - edit me."
+fi

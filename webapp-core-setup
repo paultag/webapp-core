@@ -18,6 +18,12 @@ cd $WEB_HOME
 if [ ! -d envs ]; then
     mkdir envs
 fi
+if [ ! -d socks ]; then
+    mkdir socks
+fi
+if [ ! -d logs ]; then
+    mkdir logs
+fi
 cd envs
 
 virtualenv $APP
@@ -27,4 +33,22 @@ cd $SRV_HOME/$APP
 if [ -e requirements.txt ]; then
     pip install -r requirements.txt
 fi
-python $SRV_HOME/$APP/setup.py install
+cd $SRV_HOME/$APP/
+
+WORKDIR=/tmp/$$/webapp-core
+mkdir $WORKDIR -p
+#mkdir $WORKDIR/build
+#mkdir $WORKDIR/egg-info
+#PYTHONPATH=/tmp/lib \
+#    python setup.py \
+#        build --build-base $WORKDIR/build \
+#        egg_info --egg-base $WORKDIR/egg-info \
+#        install
+
+cd $WORKDIR
+cp $SRV_HOME/$APP . -r --no-preserve=ownership
+cd $APP
+pwd
+python setup.py install
+cd $SRV_HOME
+rm -rf $WORKDIR
