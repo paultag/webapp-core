@@ -14,9 +14,12 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  uwsgi-plugin-python3,
  nginx,
  python-virtualenv
-Description: webapp core nonsense
- Extra line to trick lintian.
- Extra line to trick lintian.
- Extra line to trick lintian.
- Extra line to trick lintian.
- Extra line to trick lintian.
+Description: set of core packages and bindings to run webapps
+ This pacckage is internal to Paul Tagliamonte's setup, and as such,
+ really isn't all that useful to people deploying their own apps
+ in their own way.
+ .
+ This uses both dpkg and virtualenv to bring some measure of sanity
+ to this crazy mixed up world we live in.
+ .
+ Beware running this without understanding it.
