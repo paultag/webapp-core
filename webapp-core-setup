@@ -23,9 +23,8 @@ cd envs
 virtualenv $APP
 
 source $WEB_HOME/envs/$APP/bin/activate
-
 cd $SRV_HOME/$APP
 if [ -e requirements.txt ]; then
     pip install -r requirements.txt
 fi
-python setup.py install
+python $SRV_HOME/$APP/setup.py install
