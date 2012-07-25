@@ -11,7 +11,7 @@ fi
 
 if [ ! -d $WEB_HOME/envs/$APP ]; then
     echo "I don't see $WEB_HOME/envs/$APP"
-    echo "  - run webapp-core-setup $APP"
+    echo "  - run webapp-setup $APP"
     exit 3
 fi
 

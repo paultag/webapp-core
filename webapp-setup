@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $UID != 0 ]; then
+    echo "Be root."
+    exit 1
+fi
+
+su webapp-core -c "webapp-core-setup $@"
