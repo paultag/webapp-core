@@ -1,5 +1,36 @@
 #!/bin/bash
 
-# First, enter the virtualenv.
+WEB_HOME="/var/lib/webapp-core"
+SRV_HOME="/srv/www"
 
-# Now, install requirements.
+if [ $UID != 0 ]; then
+    echo "please invoke as root"
+    exit 1
+fi
+su webapp-core
+
+APP=$1
+
+if [ ! -d $SRV_HOME/$APP ]; then
+    echo "I don't see $SRV_HOME/$APP"
+    exit 2
+fi
+
+echo "Now setting up the basics for $APP. Cool? Hit enter."
+read foo
+
+cd $WEB_HOME
+
+if [ ! -d envs ]; then
+    mkdir envs
+fi
+cd envs
+
+virtualenv $APP
+
+source $WEB_HOME/envs/$APP/bin/activate
+
+cd $SRV_HOME/$APP
+if [ -e requirements.txt ]; then
+    pip install -r requirements.txt
+fi
