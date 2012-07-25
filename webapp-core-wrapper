@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $UID != 0 ]; then
+    echo "Need to be root."
+    exit 1
+fi
+
+su webapp-core -c $1

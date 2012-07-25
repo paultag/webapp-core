@@ -2,13 +2,6 @@
 
 WEB_HOME="/var/lib/webapp-core"
 SRV_HOME="/srv/www"
-
-if [ $UID != 0 ]; then
-    echo "please invoke as root"
-    exit 1
-fi
-su webapp-core
-
 APP=$1
 
 if [ ! -d $SRV_HOME/$APP ]; then
@@ -22,5 +15,11 @@ if [ ! -d $WEB_HOME/envs/$APP ]; then
     exit 3
 fi
 
-source $WEB_HOME/envs/$APP/bin/activate
+if [ ! -e $SRV_HOME/$APP/uwsgi.ini ]; then
+    echo "no uwsgi.ini - looked for $SRV_HOME/$APP/uwsgi.ini"
+    exit 4
+fi
 
+source $WEB_HOME/envs/$APP/bin/activate
+uwsgi \
+    --ini $SRV_HOME/$APP/uwsgi.ini

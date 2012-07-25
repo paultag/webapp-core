@@ -7,6 +7,7 @@ case "$1" in
         echo "Adding webapp-core user"
         adduser \
             --system \
+            --shell /bin/sh \
             --home /var/lib/webapp-core \
             --gecos "WWW Core User,,," \
             webapp-core

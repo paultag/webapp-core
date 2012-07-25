@@ -2,13 +2,6 @@
 
 WEB_HOME="/var/lib/webapp-core"
 SRV_HOME="/srv/www"
-
-if [ $UID != 0 ]; then
-    echo "please invoke as root"
-    exit 1
-fi
-su webapp-core
-
 APP=$1
 
 if [ ! -d $SRV_HOME/$APP ]; then
@@ -34,3 +27,4 @@ cd $SRV_HOME/$APP
 if [ -e requirements.txt ]; then
     pip install -r requirements.txt
 fi
+python setup.py install
