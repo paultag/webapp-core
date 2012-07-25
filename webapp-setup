@@ -12,6 +12,6 @@ NGINX_FRAGMENT="/etc/nginx/sites-available/$APP"
 su webapp-core -c "webapp-core-setup $@"
 
 if [ ! -e $NGINX_FRAGMENT ]; then
-    webapp-core-nginx-fragment > $NGINX_FRAGMENT
+    webapp-core-nginx-fragment $APP > $NGINX_FRAGMENT
     echo "Wrote out $NGINX_FRAGMENT - edit me."
 fi
