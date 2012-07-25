@@ -12,7 +12,8 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  uwsgi,
  uwsgi-plugin-python,
  uwsgi-plugin-python3,
- nginx
+ nginx,
+ python-virtualenv
 Description: webapp core nonsense
  Extra line to trick lintian.
  Extra line to trick lintian.
