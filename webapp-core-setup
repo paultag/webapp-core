@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -e
 
 WEB_HOME="/var/lib/webapp-core"
 SRV_HOME="/srv/www"
