@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    install)
+        echo "Adding webapp-core user"
+        adduser \
+            --system \
+            --home /var/lib/webapp-core \
+            --gecos "WWW Core User,,," \
+            webapp-core
+    ;;
+    upgrade)
+    ;;
+    abort-upgrade)
+    ;;
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 0
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
